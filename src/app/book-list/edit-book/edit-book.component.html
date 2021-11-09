@@ -1,0 +1,34 @@
+<div class="submit-form">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" required [(ngModel)]="bookOld.title"  name="title" value='{{bookOld.title}}'/>
+      </div>
+  
+      <div class="form-group">
+        <label for="auther">Auther</label>
+        <input class="form-control" id="auther" required [(ngModel)]="bookOld.auther" name="auther" />
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="story" name="description" rows="5" cols="33" class="form-control" id="description" required
+          [(ngModel)]="bookOld.description">
+          Ecrivez la description du livre ...
+        </textarea>
+      </div>
+
+      <label>
+        <input type="file" class="text-nowrap text-truncate" [(ngModel)]="bookOld.namePhoto" id="namePhoto"
+          (change)="selectFile($event)" />
+      </label>
+  
+      <div *ngIf="currentBookUpload" class="progress mt-2">
+        <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
+          aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+          {{ percentage }}%
+        </div>
+      </div>
+
+      <button class="btn btn-success" (click)="onUpdate()">Submit</button>
+  
+  </div>

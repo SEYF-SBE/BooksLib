@@ -1,0 +1,142 @@
+.header > h1{
+    font-family: 'Bad script', cursive;
+    font-size: 40px;
+    color: #fff; 
+    margin-left: 30px;
+    filter: blur(.5px);
+        text-shadow: 0 0 10px #00b3ff,
+                    0 0 20px #00b3ff;
+}
+
+ul li{
+    display: inline-block;
+}
+
+.box{
+    position: relative;
+    width: 250px;
+    height: 350px;
+    border-radius:25px;
+    background: #001923;
+    margin: 35px;
+}
+
+.box::before{
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius:25px;
+    background: #fff;
+    z-index: -1;
+}
+
+.box::after{
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #00b3ff;
+    border-radius:25px;
+    z-index: -1;
+    filter: blur(20px);
+}
+
+.box .glass{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    display: block;
+    border-bottom-left-radius:25px;
+    border-top-left-radius:25px;
+    background: rgba(255, 255, 255,.1);
+}
+
+.box .content{
+    padding: 10px;
+    color: #fff;  
+    height: 85%; 
+}
+
+.box .boxButton{
+    position: absolute;
+    bottom: 2%;
+    left: 32%;
+}
+
+.box h4{
+    min-height: 60px;
+}
+
+.box .autherP{
+    //max-height: 30px;
+    min-height: 50px;
+    text-align: center;
+}
+
+.descriptionP{
+    min-height: 100px;
+    text-align: justify;
+}
+
+section{
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+    width: 80%;
+    background: #001923;   
+  }
+  
+  section::before{
+    content: "";
+    position:absolute;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(#ffeb3b, #e91e63);
+    border-radius:50%;
+    transform: translate(-150px, 100px);
+  }
+  
+  section::after{
+    content: "";
+    position:absolute;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(#2196f3, #83d8ff);
+    border-radius:50%;
+    transform: translate(900px, 600px);
+  }
+  
+  .blueBlur{
+    position: absolute;
+    top: 10%;
+    left : 15%;
+    height: 70%;
+    width: 70%;
+    background: rgba(22, 165, 248, 0.25);
+    filter: blur(300px);
+    z-index: 0;
+  }
+
+  .container{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -53%);
+    z-index: 1000;
+    width: 97%;
+    padding-top:30px;
+    background:rgba(255,255,255,.1);
+    box-shadow: 0 25px 45px rgba(0,0,0,.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-radius:15px;
+    overflow: hidden;  
+  }

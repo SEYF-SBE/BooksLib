@@ -1,0 +1,43 @@
+<section></section>
+<div class="container">
+  <div class="submit-form">
+    <div class="blueBlur"></div>
+    <div class="col-sm-10 col-8 offset-sm-1">
+      <h2>Se connecter</h2>
+      <form [formGroup]="signIpForm" (ngSubmit)="onSubmit()" class="inputBox">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="text" class="form-control" formControlName="email" placeholder="Entrer l'émail">
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input id="password" type="password" class="form-control" formControlName="password"
+            placeholder="Entrer le mot de passe">
+        </div>
+        <button type="submit" class="btn btn-default btnValid" [disabled]="signIpForm.invalid">Se connecter</button>
+      </form>
+      <p class="text-danger">{{errorMessage}}</p>
+    </div>
+
+    <div class="formGroup">
+      <span class="or"><span class="orInner">Ou</span></span>
+    </div>
+
+
+    <!-- Calling GoogleAuth Api from AuthService -->
+    <div class="formGroup horz-center">
+      <button type="button" class="btn googleBtn grow" (click)="onSubmitGoogle()">
+        <i class="bi bi-google"></i>&nbsp;
+        <span>  Connexion avec google</span>
+      </button>
+    </div>
+
+    <div class="forgotPassword grow">
+      <a routerLink="/forgot-password">Mot de passe oublié ?</a>
+    </div>
+  </div>
+
+  <div class="redirectToLogin grow">
+    <span>Besoin d'un compte ?<a class="redirect" routerLink="/auth/signup"> S'inscrire</a></span>
+  </div>
+</div>

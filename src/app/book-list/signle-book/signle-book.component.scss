@@ -1,0 +1,129 @@
+.all{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+}
+
+.carda{
+    background: #fff;
+    position: relative;
+    width: 450px;
+    height: 550px;
+    transform-style: preserve-3d;
+    transform: perspective(2000px);
+    transition: 1s;
+    box-shadow: inset 300px 0 50px rgba(79, 255, 246, 0.15), 0 20px 20px rgba(79, 255, 246, 0.15);
+}
+
+.carda:hover{ 
+    transform: perspective(2000px) translateX(50%);
+    box-shadow: inset 20px 0 50px rgba(79, 255, 246, 0.15), 0 10px 10px rgba(79, 255, 246, 0.15);
+}
+
+.carda .details{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.carda .details img {
+    max-width: 70%;
+    max-height: 180px; 
+}
+
+.carda .details h2{
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.carda .details h3{
+    font-size: 1.5em;
+    color: #e82a5b;
+    font-weight: 600;
+}
+
+.carda .details p{
+    margin: 20px;
+    text-align: justify;
+}
+
+.carda .details a{
+    display: inline-block;
+    padding: 8px 20px;
+    background: #00b3ff;
+    color: #fff;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.carda .covera{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    transition: 1s ease-in-out;
+    transform-origin: left;
+}
+
+.carda .covera img{
+    max-width: 300px;
+    height: 300px;
+    z-index: 1;
+}
+
+.carda .covera::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 150%;
+    background: #fff;
+    transform: rotate(39.3deg);
+    box-shadow: 0 0 0 20px #00b3ff;
+    transition: 0.5s;
+    transition-delay: 0.7s;
+}
+
+.carda:hover .covera::before{
+    width: 0;
+    box-shadow: 0 0 0 350px #00b3ff;
+    transform: rotate(140.2deg);
+}
+
+.carda:hover .covera{
+    transform: rotateY(-180deg);
+}
+
+.backBtn{
+    padding: 8px 20px;
+    background: #00b3ff;
+    color: #fff;
+    margin-top: 0;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    font-weight: 500;
+    position: absolute;
+    left: 47%;
+    top: 92%;
+}
