@@ -25,6 +25,7 @@ export class EditBookComponent implements OnInit {
     this.bookOld.auther = this.route.snapshot.params['author'];
     this.bookOld.description = this.route.snapshot.params['description'];
     this.bookOld.urlPhoto = this.route.snapshot.params['urlPhoto'];
+    this.bookOld.price = this.route.snapshot.params['price'];
     this.bookOld.namePhoto = "";
   }
 

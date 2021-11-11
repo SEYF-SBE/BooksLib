@@ -13,8 +13,6 @@ export class BookFormComponent implements OnInit {
   book = new Book(new File([""], ""));
   submitted = false;
   
-  
-
   selectedBooks?: FileList;
   currentBookUpload!: Book;
   percentage = 0;

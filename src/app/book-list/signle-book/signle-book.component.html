@@ -11,8 +11,8 @@
           <h2>{{book.title | titlecase }}</h2>
           <h5>{{book.auther}}</h5>
           <p>{{book.description}}</p>
-          <h3>29<sup>€</sup></h3>
-          <a href="#">Ajouter au panier</a>
+          <h3>{{book.price}}<sup> €</sup></h3>
+          <button class="btn btn-sm" (click)="addProductToCart()">Ajouter au panier</button>
         </div>
       </div>
     </div>

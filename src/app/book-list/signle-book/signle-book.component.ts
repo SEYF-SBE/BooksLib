@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireObject } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-signle-book',
@@ -13,54 +14,20 @@ import { Observable } from 'rxjs';
 })
 export class SignleBookComponent implements OnInit {
 
-  /*@Input() book?: Book;
-  @Output() refreshList: EventEmitter<any> = new EventEmitter();
-  currentBook: Book = {
-    title: '',
-    auther: ''
-  };
-  
-  message = '';
-
-  constructor(private bookService : BookService) { }
-
-  ngOnInit(): void {
-    this.message = '';
-  }
-
-  updateBookC(): void {
-    const data = {
-      title: this.currentBook.title,
-      auther: this.currentBook.auther
-    };
-
-    if (this.currentBook.key) {
-      this.bookService.updateBook(this.currentBook.key, data)
-        .then(() => this.message = 'The tutorial was updated successfully!')
-        .catch(err => console.log(err));
-    }
-  }
-
-  deleteBook(){
-    if (this.currentBook.key) {
-      this.bookService.deleteBook(this.currentBook.key)
-        .then(() => {
-          this.refreshList.emit();
-          this.message = 'The tutorial was updated successfully!';
-        })
-        .catch(err => console.log(err));
-    }
-  }*/
-  //book !: AngularFireObject<Book>;
   book = {
+    //key: '',
     title: '',
     auther: '', 
     namePhoto: '',
     urlPhoto: '',
-    description: ''
+    description: '',
+    price:''
   };
 
-  constructor(private bookService : BookService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private bookService : BookService,
+              private route: ActivatedRoute,
+              private router: Router, 
+              private cartService : CartService) { }
 
   ngOnInit(): void {
     const key = this.route.snapshot.params['key'];
@@ -69,6 +36,18 @@ export class SignleBookComponent implements OnInit {
 
   onBack(){
     this.router.navigate(['/books']);
+  }
+
+  // ajouter un livre au panier 
+  addProductToCart() {
+    
+    let newBook = new Book(new File([''], ""));
+    
+    newBook.title = this.book.title;
+    newBook.price = Number(this.book.price);
+    newBook.key = this.route.snapshot.params['key'];
+
+    this.cartService.addLine(newBook);
   }
 
 }

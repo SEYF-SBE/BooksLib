@@ -43,6 +43,7 @@ export class BookService {
           book.auther = bookTitleAuthor.auther;
           book.description = bookTitleAuthor.description;
           book.urlPhoto = downloadURL;
+          book.price = bookTitleAuthor.price;
           this.createBook(book);
         });
       })

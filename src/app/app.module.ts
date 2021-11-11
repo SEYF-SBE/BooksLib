@@ -25,19 +25,25 @@ import { ForgotPasswordComponent } from './auth/forget-password/forget-password.
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { EditBookComponent } from './book-list/edit-book/edit-book.component';
 import { SplitPipe } from './book-list/book-form/split.pipe';
+import { CartService } from './services/cart.service';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component'; //
+import { LibFirstGuardService } from './services/lib-first.guard.service';
 
 
 const appRoutes: Routes = [
-  
-  { path: 'books', component: BookListComponent }, // canActivate: [AuthGuardService],  
+
+  { path: 'books', canActivate: [LibFirstGuardService], component: BookListComponent }, // canActivate: [AuthGuardService],  
   { path: 'books/new', canActivate: [AuthGuardService], component: BookFormComponent },
-  { path: 'books/edit/:key/:title/:author/:description/:urlPhoto/:namePhoto', canActivate: [AuthGuardService], component: EditBookComponent},
+  { path: 'books/edit/:key/:title/:author/:description/:urlPhoto/:namePhoto/:price', canActivate: [AuthGuardService], component: EditBookComponent },
   { path: 'books/view/:key', component: SignleBookComponent }, // canActivate: [AuthGuardService],
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: '', redirectTo: 'books', pathMatch: 'full'},
+  { path: 'cart', canActivate: [LibFirstGuardService], component: CartComponent },
+  { path: 'checkout', canActivate: [LibFirstGuardService], component: CheckoutComponent },
+  { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: '**', redirectTo: 'books' }
 ]
 
@@ -53,7 +59,9 @@ const appRoutes: Routes = [
     VerifyEmailComponent,
     ForgotPasswordComponent,
     EditBookComponent,
-    SplitPipe
+    SplitPipe,
+    CartComponent,
+    CheckoutComponent //
   ],
   imports: [
     BrowserModule,
@@ -72,7 +80,9 @@ const appRoutes: Routes = [
   providers: [
     AuthService,
     AuthGuardService,
-    BookService
+    BookService,
+    CartService,
+    LibFirstGuardService
   ],
   bootstrap: [AppComponent]
 })

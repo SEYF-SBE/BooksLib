@@ -93,6 +93,6 @@ export class BookListComponent implements OnInit {
 
   // To update a book
   onUpdateBook(book: Book){
-    this.router.navigate(['/books', 'edit', book.key, book.title, book.auther, book.description, book.urlPhoto, book.namePhoto]);
+    this.router.navigate(['/books', 'edit', book.key, book.title, book.auther, book.description, book.urlPhoto, book.namePhoto, book.price]);
   }
 }

@@ -13,9 +13,25 @@
             </div>
 
             <div class="form-group">
-              <label for="auther">Autheur</label>
-              <input class="form-control" id="auther" required [(ngModel)]="book.auther" name="auther" />
-              <span class="line"></span>
+              <div class="row">
+                <div class="col-sm-9">
+                  <label for="auther">Auteur</label>
+                  <input type="text" class="form-control" id="auther" required [(ngModel)]="book.auther"
+                    name="auther" />
+                  <span class="line"></span>
+                </div>
+
+                <div class="col-sm-3">
+                  <label for="price">Prix</label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" id="price" aria-describedby="basic-addon1" required
+                      [(ngModel)]="book.price" name="price" />
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon1">€</span>
+                      </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="form-group">
@@ -28,8 +44,9 @@
 
           <div class="custom-file">
             <input type="file" class="custom-file-input" [(ngModel)]="book.namePhoto" id="namePhoto"
-              (change)="selectFile($event)" aria-describedby="inputGroupFileAddon01" required/>
-            <label class="custom-file-label labelSp" for="namePhoto">{{ (book.namePhoto)? ((book.namePhoto)| split : "fakepath") : "Choisir une image pour le livre"}}</label>
+              (change)="selectFile($event)" aria-describedby="inputGroupFileAddon01" required />
+            <label class="custom-file-label labelSp" for="namePhoto">{{ (book.namePhoto)? ((book.namePhoto)| split :
+              "fakepath") : "Choisir une image pour le livre"}}</label>
             <div class="invalid-feedback">Il faut choisir une image pour le livre.</div>
             <p id="inputGroupFileAddon01"></p>
           </div>
@@ -44,8 +61,8 @@
         </div>
 
         <div *ngIf="submitted">
-          <h4 class="alert alert-success">You submitted successfully!</h4>
-          <button class="btn btn-success" (click)="newBook()">Add</button>
+          <h4 class="alert alert-success">Le livre a été ajouté avec succès!</h4>
+          <button class="btn btn-default" (click)="newBook()">Ajouter un nouveau livre</button>
         </div>
       </div>
     </div>

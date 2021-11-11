@@ -8,6 +8,7 @@ export class Book {
 	namePhoto ?: string;
 	urlPhoto ?: string;
 	file ?: File;
+	price ?: number;
 
 	constructor(file : File){
 		this.file = file;
