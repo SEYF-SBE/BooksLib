@@ -28,10 +28,10 @@
                     </td>
                     <td>{{line.book.title}}</td>
                     <td class="text-right">
-                        {{line.book.price | currency:"USD":"symbol":"2.2-2"}}
+                        {{line.book.price | currency:"EUR":"symbol":"2.2-2"}}
                     </td>
                     <td class="text-right">
-                        {{(line.lineTotal) | currency:"USD":"symbol":"2.2-2" }}
+                        {{(line.lineTotal) | currency:"EUR":"symbol":"2.2-2" }}
                     </td>
                     <td class="text-center">
                         <button class="btn btn-sm btn-danger" (click)="cart.removeLine(line.book.key!)">
