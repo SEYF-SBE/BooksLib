@@ -16,29 +16,29 @@
 
     <section></section>
     <div class="container">
-    <div class="blueBlur"></div>
-    <ul class="ml-1">
-      <li class="box card" *ngFor="let book of books; let i = index">
-        <div class="glass"></div>
-        <div class="card-body">
-          <div class="content" style="cursor: pointer;" [class.active]="i == currentIndex"
-            (click)="setActiveBook(book, i)">
-            <h4 class="card-title" style="text-align: center;">{{ book.title | slice:0:25 }}</h4>
-            <p class="card-text autherP">Par : {{ book.auther }}</p>
-            <p class="card-text descriptionP">{{ (book.description | slice:0:110) + '..'}}</p>
-          </div>
+      <div class="blueBlur"></div>
+      <ul class="ml-1">
+        <li class="box card" *ngFor="let book of books; let i = index">
+          <div class="glass"></div>
+          <div class="card-body">
+            <div class="content" style="cursor: pointer;" [class.active]="i == currentIndex"
+              (click)="setActiveBook(book, i)">
+              <h4 class="card-title" style="text-align: center;">{{ book.title | slice:0:25 }}</h4>
+              <p class="card-text autherP">Par : {{ book.auther }}</p>
+              <p class="card-text descriptionP">{{ (book.description | slice:0:110) + '..'}}</p>
+            </div>
 
-          <div class="boxButton">
-            <button class="btn btn-danger" *ngIf="isAuthInList" (click)="onDeleteBookFromList(book)">
-              <i class="bi bi-trash" style="color:#000"></i>
-            </button>
-            <button class="btn btn-warning ml-2" *ngIf="isAuthInList" (click)="onUpdateBook(book)">
-              <i class="bi bi-pencil"></i>
-            </button>
+            <div class="boxButton">
+              <button class="btn btn-danger" *ngIf="isAuthInList" (click)="onDeleteBookFromList(book)">
+                <i class="bi bi-trash" style="color:#000"></i>
+              </button>
+              <button class="btn btn-warning ml-2" *ngIf="isAuthInList" (click)="onUpdateBook(book)">
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

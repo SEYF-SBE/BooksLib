@@ -41,7 +41,7 @@ const appRoutes: Routes = [
   { path: 'auth/signin', component: SigninComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'cart', canActivate: [LibFirstGuardService], component: CartComponent },
+  { path: 'cart',  component: CartComponent }, //canActivate: [LibFirstGuardService],
   { path: 'checkout', canActivate: [LibFirstGuardService], component: CheckoutComponent },
   { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: '**', redirectTo: 'books' }

@@ -46,7 +46,7 @@ export class SignleBookComponent implements OnInit {
     newBook.title = this.book.title;
     newBook.price = Number(this.book.price);
     newBook.key = this.route.snapshot.params['key'];
-
+    newBook.urlPhoto = this.book.urlPhoto;
     this.cartService.addLine(newBook);
   }
 

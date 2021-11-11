@@ -1,0 +1,110 @@
+h2 {
+    font-family: "Bad script", cursive;
+    font-size: 40px;
+    color: #fff;
+    //margin-left: 30px;
+    filter: blur(0.5px);
+    text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff;
+}
+
+section {
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    padding: 20px;
+    width: 80%;
+    background: #001923;
+    z-index: -1;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(#ffeb3b, #e91e63);
+    border-radius: 50%;
+    transform: translate(-70px, 40px);
+}
+
+section::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(#2196f3, #83d8ff);
+    border-radius: 50%;
+    transform: translate(950px, -70px);
+}
+
+.blueBlur {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    height: 70%;
+    width: 70%;
+    background: rgba(22, 165, 248, 0.25);
+    filter: blur(300px);
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -53%);
+    z-index: 1000;
+    width: 97%;
+    //padding-top:30px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.imgBook {
+    height: 60px;
+    width: 60px;
+}
+
+tbody {
+    height: 100px;
+}
+
+tbody tr td {
+    vertical-align: middle;
+}
+
+.emptyCart {
+    font-weight: 500;
+    font-size: 1.5em;
+    color: #e91e63;
+}
+
+.buttonControl {
+    position: relative;
+    margin-top: -90px;
+    margin-left: 30px;
+}
+
+.buttonControl .checkOutBtn {
+    float: right;
+    background-color: #00b3ff;
+    border-color: #00b3ff;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.continueBtn{
+    float: left;
+    background-color: #a7a7a7;
+    border-color: #a7a7a7;
+    color: black;
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 16px;
+}
