@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Order } from '../models/Order.model';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  orderSent: boolean = false;
+  submitted: boolean = false;
+  constructor(public orderService: OrderService,
+    public order: Order) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  submitOrder(form: NgForm) {
+    this.submitted = true;
+    if (form.valid) {
+      this.orderService.saveOrderInRTDB(this.order);
+      this.order.clear();
+      this.orderSent = true;
+      this.submitted = false;
+    }
   }
 
 }

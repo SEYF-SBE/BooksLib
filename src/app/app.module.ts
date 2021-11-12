@@ -29,6 +29,8 @@ import { CartService } from './services/cart.service';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component'; //
 import { LibFirstGuardService } from './services/lib-first.guard.service';
+import { OrderService } from './services/order.service';
+import { Order } from './models/Order.model';
 
 
 const appRoutes: Routes = [
@@ -42,7 +44,7 @@ const appRoutes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'cart',  component: CartComponent }, //canActivate: [LibFirstGuardService],
-  { path: 'checkout', canActivate: [LibFirstGuardService], component: CheckoutComponent },
+  { path: 'checkout', component: CheckoutComponent },//canActivate: [LibFirstGuardService],
   { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: '**', redirectTo: 'books' }
 ]
@@ -82,7 +84,9 @@ const appRoutes: Routes = [
     AuthGuardService,
     BookService,
     CartService,
-    LibFirstGuardService
+    LibFirstGuardService,
+    OrderService,
+    Order
   ],
   bootstrap: [AppComponent]
 })
