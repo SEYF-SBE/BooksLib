@@ -7,21 +7,21 @@ export const environment = {
 
   firebaseConfig: {
 
-    apiKey: "AIzaSyD6YHQSYL2w4-LIFv_WXaJd0wc6flVqH68",
+    apiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 
-    authDomain: "bookshelves-3f45f.firebaseapp.com",
+    authDomain: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 
-    databaseURL: "https://bookshelves-3f45f-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 
-    projectId: "bookshelves-3f45f",
+    projectId: "booksLib",
 
-    storageBucket: "bookshelves-3f45f.appspot.com",
+    storageBucket: "bookLib.appspot.com",
 
-    messagingSenderId: "394859088902",
+    messagingSenderId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXx",
 
-    appId: "1:394859088902:web:20ba88abb1f8bbe7e70787",
+    appId: "1:394859088902:web:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx",
 
-    //measurementId: "G-WB7ZBMW9TT"
+    //measurementId: "G-XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
   }
 };
