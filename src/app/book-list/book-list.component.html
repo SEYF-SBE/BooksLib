@@ -23,9 +23,10 @@
           <div class="card-body">
             <div class="content" style="cursor: pointer;" [class.active]="i == currentIndex"
               (click)="setActiveBook(book, i)">
+              <img class="imgBook" src='{{book.urlPhoto}}'>
               <h4 class="card-title" style="text-align: center;">{{ book.title | slice:0:25 }}</h4>
               <p class="card-text autherP">Par : {{ book.auther }}</p>
-              <p class="card-text descriptionP">{{ (book.description | slice:0:110) + '..'}}</p>
+              <p class="card-text descriptionP">{{ (book.description | slice:0:100) + '..'}}</p>
             </div>
 
             <div class="boxButton">

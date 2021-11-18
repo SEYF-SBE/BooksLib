@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import VanillaTilt from 'vanilla-tilt';
 import { Order } from '../models/Order.model';
 import { OrderService } from '../services/order.service';
 
@@ -15,7 +16,10 @@ export class CheckoutComponent implements OnInit {
   constructor(public orderService: OrderService,
     public order: Order) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    VanillaTilt.init(document.querySelector(".card-pay") as HTMLElement, { max: 25, speed: 400 });
+  
+  }
 
   submitOrder(form: NgForm) {
     this.submitted = true;

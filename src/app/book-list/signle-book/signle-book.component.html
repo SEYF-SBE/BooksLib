@@ -7,10 +7,10 @@
 
       <div class="details">
         <div>
-          <img src='{{book.urlPhoto}}'>
+          <img class="imgBook" src='{{book.urlPhoto}}'>
           <h2>{{book.title | titlecase }}</h2>
           <h5>{{book.auther}}</h5>
-          <p>{{book.description}}</p>
+          <p>{{(book.description | slice:0:240) + '..'}}</p>
           <h3>{{book.price}}<sup> €</sup></h3>
           <button class="btn btn-sm" (click)="addProductToCart()">Ajouter au panier</button>
         </div>

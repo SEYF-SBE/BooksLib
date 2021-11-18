@@ -1,0 +1,34 @@
+.container {
+    position: relative;
+    right: 0px;
+    width: 190px;
+    background-color: transparent;
+}
+
+.bgColor {
+    background: black;
+}
+
+select {
+    width: 97%;
+    height: 50px;
+    font-size: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: initial;
+    //border-radius: 0;
+    //background-color: #00b3ff;
+    //border: none;
+    //border-bottom: 2px solid #962d22;
+    color: black;
+    appearance: none;
+    //padding: 10px;
+    //padding-right: 38px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+select option{
+    background-color: #00b3ff;
+}

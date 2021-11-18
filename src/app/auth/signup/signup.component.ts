@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-  signUpForm !: FormGroup
+  signUpForm !: FormGroup;
   errorMessage !: string;
 
   constructor(private authService: AuthService,
@@ -33,11 +33,12 @@ export class SignupComponent implements OnInit {
     const password = this.signUpForm.get('password')?.value;
 
     this.authService.creatNewUser(email, password).then(
-      () => {
+      (result) => {
         //this.router.navigate(['/books']);
-        this.router.navigate(['verify-email-address']);
+        //
       },(error) => {
         this.errorMessage = error;
+        this.router.navigate(['auth/signup']);
       }
     );
   }

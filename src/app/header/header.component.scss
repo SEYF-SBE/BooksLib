@@ -1,3 +1,44 @@
-nav a { 
-    //color: #fff;
+nav { 
+    background-color: #00b3ff;
+}
+
+ul a {
+    color: black;
+}
+
+.cart-basket {
+    font-size: .6rem;
+    position: relative;
+    top: -25px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    background-color: #ff0055;
+    border-radius: 50%;
+  }
+
+.cartBtn{
+    height:40px;
+    position: absolute;
+    right: 165px;
+    top: 8px;
+}
+
+.rightPosition{
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+.rightPosition button{
+    width: 100%;
+    font-size: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #00b3ff;
+    border: none;
+    //border-bottom: 2px solid #00abf5;
+    color: black;
+   
 }

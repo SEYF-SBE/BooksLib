@@ -1,47 +1,78 @@
-`<div>
-    <h3 class="bg-info p-1 text-white">Checkout Component</h3>
+<div>
+    <div>
+        <h3 class="bg-info p-1 text-white">Checkout Component</h3>
+    </div>
+
+    <div *ngIf="orderSent" class="m-2 text-center">
+        <h2>Thanks!</h2>
+        <p>Thanks for placing your order.</p>
+        <p>We'll ship your goods as soon as possible.</p>
+        <button class="btn btn-primary" routerLink="/store">Return to Store</button>
+    </div>
+
+    <form *ngIf="!orderSent" #form="ngForm" novalidate (ngSubmit)="submitOrder(form)" class="m-2">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" #name="ngModel" name="name" [(ngModel)]="order.name" required />
+            <span *ngIf="submitted && name.invalid" class="text-danger">
+                Please enter your name
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" #address="ngModel" name="address" [(ngModel)]="order.address" required />
+            <span *ngIf="submitted && address.invalid" class="text-danger">
+                Please enter your address
+            </span>
+        </div>
+        <div class="form-group">
+            <label>City</label>
+            <input class="form-control" #city="ngModel" name="city" [(ngModel)]="order.city" required />
+            <span *ngIf="submitted && city.invalid" class="text-danger">
+                Please enter your city
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Zip/Postal Code</label>
+            <input class="form-control" #zip="ngModel" name="zip" [(ngModel)]="order.zip" required />
+            <span *ngIf="submitted && zip.invalid" class="text-danger">
+                Please enter your zip/postal code
+            </span>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-secondary m-1" routerLink="/cart">Back</button>
+            <button class="btn btn-primary m-1" type="submit">Complete Order</button>
+        </div>
+    </form>
 </div>
 
-<div *ngIf="orderSent" class="m-2 text-center">
-    <h2>Thanks!</h2>
-    <p>Thanks for placing your order.</p>
-    <p>We'll ship your goods as soon as possible.</p>
-    <button class="btn btn-primary" routerLink="/store">Return to Store</button>
-</div>
+<section>
+    <div class="card-pay" data-tilt data-tilt-glare="true" data-tilt-scale="1.1">
 
-<form *ngIf="!orderSent" #form="ngForm" novalidate (ngSubmit)="submitOrder(form)" class="m-2">
-    <div class="form-group">
-        <label>Name</label>
-        <input class="form-control" #name="ngModel" name="name" [(ngModel)]="order.name" required />
-        <span *ngIf="submitted && name.invalid" class="text-danger">
-            Please enter your name
-        </span>
-    </div>
-    <div class="form-group">
-        <label>Address</label>
-        <input class="form-control" #address="ngModel" name="address" [(ngModel)]="order.address" required />
-        <span *ngIf="submitted && address.invalid" class="text-danger">
-            Please enter your address
-        </span>
-    </div>
-    <div class="form-group">
-        <label>City</label>
-        <input class="form-control" #city="ngModel" name="city" [(ngModel)]="order.city" required />
-        <span *ngIf="submitted && city.invalid" class="text-danger">
-            Please enter your city
-        </span>
-    </div>
+        <div class="card-inside">
+            <div class="globe"></div>
+            <img src="../assets/images/kisspng-integrated-circuits.png" alt="" class="chip">
+            <div class="input-group">
+                <input type="text" id="tentacles" name="tentacles"
+                 min="13" max="13"
+                 placeholder="Numéro de la carte">
+            </div>
+            <div class="input-group">
+                <input type="month" id="dateFin" name="dateFin" 
+                min="2020-01" value="25/12"
+                placeholder="Expire Fin">
+            </div>
 
-    <div class="form-group">
-        <label>Zip/Postal Code</label>
-        <input class="form-control" #zip="ngModel" name="zip" [(ngModel)]="order.zip" required />
-        <span *ngIf="submitted && zip.invalid" class="text-danger">
-            Please enter your zip/postal code
-        </span>
-    </div>
+            <div class="">
+                <input type="text" id="name" name="name"
+                 placeholder="Nom sur la carte">
+            </div>
 
-    <div class="text-center">
-        <button class="btn btn-secondary m-1" routerLink="/cart">Back</button>
-        <button class="btn btn-primary m-1" type="submit">Complete Order</button>
+            <img src="../assets/images/kisspng-credit-card-visa.png" alt="" class="visa">
+            <img src="../assets/images/kisspng-mastercard.png" alt="" class="visa">
+        </div>
+
     </div>
-</form>
+</section>

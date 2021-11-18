@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
 
-  signIpForm !: FormGroup
+  signIpForm !: FormGroup;
   errorMessage !: string;
 
   constructor(private authService: AuthService,
@@ -33,7 +33,7 @@ export class SigninComponent implements OnInit {
     const password = this.signIpForm.get('password')?.value;
 
     this.authService.SignInUser(email, password).then(
-      () => {
+      (resolve) => {
         this.router.navigate(['/books']);
       }, (error) => {
         this.errorMessage = error;
@@ -42,8 +42,13 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmitGoogle(){
-    this.authService.GoogleAuth();
-    this.router.navigate(['/books']);
+    this.authService.GoogleAuth().then(
+      (result) => {
+        this.router.navigate(['/books']);
+    }, (error) => {
+      alert(error.message);
+    });
+    //this.router.navigate(['/books']);
   }
 
 }

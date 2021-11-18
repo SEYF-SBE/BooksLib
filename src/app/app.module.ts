@@ -31,6 +31,8 @@ import { CheckoutComponent } from './checkout/checkout.component'; //
 import { LibFirstGuardService } from './services/lib-first.guard.service';
 import { OrderService } from './services/order.service';
 import { Order } from './models/Order.model';
+import { CheckOutConnectComponent } from './check-out-connect/check-out-connect.component';
+import { DropdownComponent } from './header/dropdown/dropdown.component';
 
 
 const appRoutes: Routes = [
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'cart',  component: CartComponent }, //canActivate: [LibFirstGuardService],
   { path: 'checkout', component: CheckoutComponent },//canActivate: [LibFirstGuardService],
+  { path: 'checkoutConnect', component: CheckOutConnectComponent },
   { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: '**', redirectTo: 'books' }
 ]
@@ -63,7 +66,9 @@ const appRoutes: Routes = [
     EditBookComponent,
     SplitPipe,
     CartComponent,
-    CheckoutComponent //
+    CheckoutComponent,
+    CheckOutConnectComponent,
+    DropdownComponent //
   ],
   imports: [
     BrowserModule,
@@ -88,6 +93,6 @@ const appRoutes: Routes = [
     OrderService,
     Order
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, DropdownComponent]
 })
 export class AppModule { }

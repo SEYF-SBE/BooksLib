@@ -40,11 +40,12 @@ export class AuthService {
   creatNewUser(email: string, password: string) {
 
     return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then(result => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
+        this.router.navigate(['verify-email-address']);
         this.SendVerificationMail();
-      }).catch((error) => {
+      }).catch(error => {
         window.alert(error.message)
       })
   }
@@ -62,7 +63,7 @@ export class AuthService {
     }
   }
 
-  
+
   SignInUser(email: string, password: string) {
 
     return new Promise<void>(
@@ -83,25 +84,26 @@ export class AuthService {
   // Sign in with Google
 
   GoogleAuth() {
-    //return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => console.log(res));
-    firebase.auth().getRedirectResult().then(
-      function (result) {
-        // const showLoading = true;
-        if (result.credential) {
-          //var token = result.credential.accessToken;
-          //console.log(token);
-        }
-        var user = result.user;
-        console.log(user);
-      });
-    //const showLoading = true;
+
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope("profile");
     provider.addScope("email");
-    firebase.auth().signInWithRedirect(provider);
+    
+    //firebase.auth().getRedirectResult().then( //this is when i want to redirect to google connection page
+    return firebase.auth().signInWithPopup(provider).then( //this is when i want to open google connection page in PopUp
+      (result) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['dashboard']);
+        });
+      }).catch((error) => {
+        window.alert(error);
+      });
+    //const showLoading = true;
+
+
   }
 
-  ForgotPassword(passwordResetEmail : string) {
+  ForgotPassword(passwordResetEmail: string) {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
         window.alert('Password reset email sent, check your inbox.');

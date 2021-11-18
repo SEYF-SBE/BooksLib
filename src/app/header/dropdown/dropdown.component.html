@@ -1,0 +1,18 @@
+<div class="container mt-2">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <select class="bgColor" formControlName="website" class="form-control" (change)="changeWebsite($event)">
+               
+                <span><i class="bi bi-slash-lg"></i></span>
+                <option *ngFor="let web of websiteList"><i class="bi bi-slash-lg"></i>{{web}}</option> <!-- blur, click-->
+            </select>
+        </div>
+    </form>
+</div>
+
+<!--
+<i class="bi bi-box-arrow-in-right"></i>
+<i class="bi bi-slash-lg"></i>
+<i class="bi bi-person"></i>
+-->
+
