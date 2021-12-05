@@ -4,24 +4,27 @@
 
 export const environment = {
   production: false,
+  
+  // you need to change this part of configuration (you must enter your firebase database config)
 
   firebaseConfig: {
 
-    apiKey: "AIzaSyD6YHQSYL2w4-LIFv_WXaJd0wc6flVqH68",
+    apiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 
-  authDomain: "bookshelves-3f45f.firebaseapp.com",
+    authDomain: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 
-  databaseURL: "https://bookshelves-3f45f-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 
-  projectId: "bookshelves-3f45f",
+    projectId: "booksXLibXX",
 
-  storageBucket: "bookshelves-3f45f.appspot.com",
+    storageBucket: "bookLXXXibXX.apXXXpspot.com",
 
-  messagingSenderId: "394859088902",
+    messagingSenderId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXx",
 
-  appId: "1:394859088902:web:20ba88abb1f8bbe7e70787",
+    appId: "1:3XXXXXX8902:web:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx",
 
-  measurementId: "G-WB7ZBMW9TT"
+    //measurementId: "X-XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
 
   }
 };
