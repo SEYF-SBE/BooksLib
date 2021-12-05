@@ -1,45 +1,40 @@
-<div class="list row">
-  <div class="col-sm-12">
-
-    <div class="row">
-      <div class="col-sm-7 ml-5 header">
-        <h1 class="mt-3">Liste de livres</h1>
-      </div>
-
-      <div *ngIf="isAuthInList" class="col-sm-4 mt-3" style="width: 150%;">
-        <button class="btn btn-success" (click)="onNewBook()" style="margin-left: 76px;">Nouveau livre</button>
-        <button class="m-2 btn btn-danger" *ngIf="isEmptyObject(books) === false" (click)="deleteAllBooks()">
-          Supprimer tous
-        </button>
-      </div>
-    </div>
-
-    <section></section>
-    <div class="container">
-      <div class="blueBlur"></div>
-      <ul class="ml-1">
-        <li class="box card" *ngFor="let book of books; let i = index">
-          <div class="glass"></div>
-          <div class="card-body">
-            <div class="content" style="cursor: pointer;" [class.active]="i == currentIndex"
-              (click)="setActiveBook(book, i)">
-              <img class="imgBook" src='{{book.urlPhoto}}'>
-              <h4 class="card-title" style="text-align: center;">{{ book.title | slice:0:25 }}</h4>
-              <p class="card-text autherP">Par : {{ book.auther }}</p>
-              <p class="card-text descriptionP">{{ (book.description | slice:0:100) + '..'}}</p>
-            </div>
-
-            <div class="boxButton">
-              <button class="btn btn-danger" *ngIf="isAuthInList" (click)="onDeleteBookFromList(book)">
-                <i class="bi bi-trash" style="color:#000"></i>
-              </button>
-              <button class="btn btn-warning ml-2" *ngIf="isAuthInList" (click)="onUpdateBook(book)">
-                <i class="bi bi-pencil"></i>
-              </button>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+<div class="row">
+  <div class="col header">
+    <h1 class="">Liste de livres</h1>
   </div>
+
+  <div *ngIf="isAuthInList && userDisplayName !== null && userDisplayName === 'admin'" 
+       class="col btnDeleteAddBook">
+    <button class="btn newBookBtn" (click)="onNewBook()">Nouveau livre</button>
+    <button class="m-1 btn deleteBookBtn" *ngIf="isEmptyObject(books) === false" (click)="deleteAllBooks()">
+      Supprimer tous
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="blueBlur"></div>
+  <ul class="" id="myList">
+    <li class="box card" *ngFor="let book of books; let i = index">
+      <div class="glass"></div>
+      <div class="card-body">
+        <div class="content" style="cursor: pointer;" [class.active]="i == currentIndex"
+          (click)="setActiveBook(book, i)">
+          <img class="imgBook" src='{{book.urlPhoto}}'>
+          <h4 class="card-title">{{ book.title | slice:0:25 }}</h4>
+          <p class="card-text autherP">Par : {{ book.auther }}</p>
+          <p class="card-text descriptionP">{{ (book.description | slice:0:98) + '..'}}</p>
+        </div>
+
+        <div class="boxButton" *ngIf="userDisplayName !== null && userDisplayName === 'admin'">
+          <button class="btn btnDelete" *ngIf="isAuthInList" (click)="onDeleteBookFromList(book)">
+            <i class="bi bi-trash"></i>
+          </button>
+          <button class="btn btn-warning ml-1" *ngIf="isAuthInList" (click)="onUpdateBook(book)">
+            <i class="bi bi-pencil"></i>
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>

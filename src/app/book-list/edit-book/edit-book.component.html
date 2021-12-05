@@ -4,61 +4,90 @@
       <div class="blueBlur"></div>
       <div class="col-sm-10 col-8 offset-sm-1">
         <h2>Modifier les données du livre</h2>
-        <div class="inputBox">
-          <div class="form-group">
-            <label for="title">Title</label>
+        <div *ngIf="!submitted">
+
+          <div class="inputBox">
             <input type="text" class="form-control" id="title" required [(ngModel)]="bookOld.title" name="title"
               value='{{bookOld.title}}' />
+            <span class="text">Titre</span>
+            <span class="line"></span>
           </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-9">
-                <label for="auther">Auteur</label>
-                <input type="text" class="form-control" id="auther" required [(ngModel)]="bookOld.auther"
-                  name="auther" />
+          <div class="row">
+            <div class="col-sm-9">
+              <div class="inputBox">
+                <input type="text" class="form-control" id="auther" required
+                  onkeypress="return /[a-z ]/i.test(event.key)" [(ngModel)]="bookOld.auther" name="auther" />
+                <span class="text">Auteur</span>
                 <span class="line"></span>
               </div>
+            </div>
 
-              <div class="col-sm-3">
-                <label for="price">Prix</label>
-                <div class="input-group">
-                  <input type="number" class="form-control" id="price" aria-describedby="basic-addon1" required
-                    [(ngModel)]="bookOld.price" name="price" />
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon1">€</span>
-                    </div>
-                </div>
+            <div class="col-sm-3">
+              <div class="inputBox">
+                <input type="number" step="0.01" class="form-control" id="price" aria-describedby="basic-addon1"
+                  required [(ngModel)]="bookOld.price" name="price" min="0"
+                  onkeypress="return /[0-9.]/i.test(event.key)" />
+                <span class="text">Prix <i class="bi bi-currency-euro icon"></i></span>
+                <span class="line"></span>
               </div>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="description">Description</label>
+          <div class="inputBox">
             <textarea id="story" name="description" rows="5" cols="33" class="form-control" id="description" required
-              [(ngModel)]="bookOld.description">
-          Ecrivez la description du livre ...
-        </textarea>
+              [(ngModel)]="bookOld.description"></textarea>
+            <span class="text">Description</span>
+            <span class="lineTextArea"></span>
           </div>
-        </div>
 
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" [(ngModel)]="bookOld.namePhoto" id="namePhoto"
-            (change)="selectFile($event)" aria-describedby="inputGroupFileAddon01" required />
-          <label class="custom-file-label labelSp" for="namePhoto">{{ (bookOld.namePhoto)? ((bookOld.namePhoto)| split :
-            "fakepath") : "Choisir une image pour le livre"}}</label>
-          <div class="invalid-feedback">Il faut choisir une image pour le livre.</div>
-          <p id="inputGroupFileAddon01"></p>
-        </div>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" [(ngModel)]="bookOld.namePhoto" id="namePhoto"
+              (change)="selectFile($event)" aria-describedby="inputGroupFileAddon01" required />
+            <label class="custom-file-label labelSp" for="namePhoto">{{ (bookOld.namePhoto)? ((bookOld.namePhoto)| split
+              :"fakepath") : "Choisir une image pour le livre"}}</label>
 
-        <div *ngIf="currentBookUpload" class="progress mt-2">
-          <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
-            aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
-            {{ percentage }}%
+            <span class="line"></span>
+
+            <div class="invalid-feedback">Il faut choisir une image pour le livre.</div>
+            <p id="inputGroupFileAddon01"></p>
           </div>
+<!--
+          <div *ngIf="currentBookUpload" class="progress mt-2">
+            <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
+              aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+              {{ percentage }}%
+            </div>
+          </div>
+-->
+          <button class="btn btn-default mt-4 btnValid" (click)="onUpdate()">Enregistrer</button>
+
         </div>
 
-        <button class="btn btn-default mt-4 btnValid" (click)="onUpdate()">Enregistrer</button>
+        <div *ngIf="submitted">
+          <div *ngIf="!bookOld.title || !bookOld.auther || !bookOld.price || !bookOld.description">
+            <h5 style="color: #fff; margin-top: 100px"> Vous avez oublié de remplir : </h5>
+            <button class="btnReload" (click)="reloadPage()">Retour</button>
+          </div>
+          <ul>
+            <li *ngIf="!bookOld.title" class="text-danger">
+              Le titre du livre.
+            </li>
+            <li *ngIf="!bookOld.auther" class="text-danger">
+              L'auteur du livre.
+            </li>
+
+            <li *ngIf="bookOld.price === 0" class="text-danger">
+              Le prix du livre.
+            </li>
+            <li *ngIf="!bookOld.description" class="text-danger">
+              La description du livre.
+            </li>
+            <li *ngIf="!bookOld.namePhoto" class="text-danger">
+              L'image du livre.
+            </li>
+          </ul>
+        </div>
 
       </div>
     </div>

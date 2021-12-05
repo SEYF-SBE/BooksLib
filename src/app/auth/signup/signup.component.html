@@ -2,21 +2,63 @@
 <div class="container">
 	<div class="row">
 		<div class="blueBlur"></div>
+		<h2>Créer un nouveau compte</h2>
+
 		<div class="col-sm-8 offset-sm-2">
-			<h3>Créer un nouveau compte</h3>
 			<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="inputBox">
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input id="email" type="text" class="form-control" formControlName="email" placeholder="Entrer l'émail">
+
+				<div class="inputBox">
+					<input type="text" id="displayName" formControlName="displayName" required/>
+					<span class="text">Nom d'utilisateur</span>
+					<span class="line"></span>
 				</div>
-				<div class="form-group">
-					<label for="password">Mot de passe</label>
-					<input id="password" type="password" class="form-control" formControlName="password" placeholder="Entrer le mot de passe">
+				<div class="inputBox">
+					<input id="email" type="text" class="form-control" formControlName="email" required/>
+					<span class="text">Email</span>
+					<span class="line"></span>
 				</div>
-				<button type="submit" class="btn btn-default btnValid" [disabled]="signUpForm.invalid">Créer mon
-					compte</button>
+				<div class="inputBox">
+					<input id="password" type="password" class="form-control" formControlName="password" required/>
+					<span class="text">Mot de passe</span>
+					<span class="line"></span>
+				</div>
+
+				<button type="submit" class="btn btn-default btnValid" [disabled]="signUpForm.invalid">
+					Créer mon compte</button>
 			</form>
-			<p class="text-danger">{{errorMessage}}</p>
+			<!--<p class="text-danger">{{errorMessage}}</p>-->
+		</div>
+	</div>
+</div>
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Le mot de passe doit avoir : </h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<ul>
+					<li *ngIf="lengthPw === true" class="text-danger">
+						Plus de 8 caractères.
+					</li>
+					<li *ngIf="validationStrUpper === 'uppercase'" class="text-danger">
+						Au moins une lettre majuscule.
+					</li>
+					<li *ngIf="validationStrLow === 'lowcase'" class="text-danger">
+						Au moins une lettre minuscule.
+					</li>
+					<li *ngIf="validationStrSp === 'spcharcase'" class="text-danger">
+						Au moins un caractère spécial.
+					</li>
+				</ul>
+
+			</div>
 		</div>
 	</div>
 </div>

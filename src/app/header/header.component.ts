@@ -5,6 +5,7 @@ import "firebase/compat/auth"
 import { CartService } from '../services/cart.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   isAuth: boolean = false;
 
-  //@ViewChild('content') content: any;
+
   @ViewChild('demoBasic', { static: true }) demoBasic: any;
 
   constructor(private authService: AuthService,
@@ -31,17 +32,10 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
+
   }
 
   onSignOut(){
     this.authService.signOut();
   }
-
-  /*onCart(itemNumber : number){
-    if(itemNumber === 0){
-      this.demoBasic.show();
-    }else{
-      this.router.navigate(['/cart']);
-    }
-  }*/
 }

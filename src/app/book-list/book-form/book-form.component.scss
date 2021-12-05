@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap");
+
 section{
     display: flex;
     justify-content: center;
@@ -5,27 +7,29 @@ section{
     min-height: 70vh;
     padding: 20px;
     width: 100%;
-    background: #001923;   
+    margin-top: 5%;
+    background: transparent;  
+    font-family: "Poppins", sans-serif; 
 }
 
 section::before{
     content: "";
     position:absolute;
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(#ffeb3b, #e91e63);
+    width: 270px;
+    height: 270px;
+    background: linear-gradient(#ffeb3b 10%, #c19a59 70%);
     border-radius:50%;
-    transform: translate(-420px, -100px);
+    transform: translate(-450px, -90px);
 }
 
 section::after{
     content: "";
     position:absolute;
-    width: 350px;
-    height: 350px;
-    background: linear-gradient(#2196f3, #83d8ff);
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(#c19a59 40%, #353535);
     border-radius:50%;
-    transform: translate(400px, 120px);
+    transform: translate(450px, 125px);
 }
 
 .blueBlur{
@@ -33,18 +37,18 @@ section::after{
     left : 15%;
     min-height: 65vh;
     width: 70%;
-    background: gray;
-    filter: blur(200px);
-    z-index: 0;
-
+    background: rgba(88, 88, 88, 0.35);
+    filter: blur(700px);
+    z-index: -2;
 }
 
 .container{
     position:relative;
     z-index: 1000;
-    width: 100%;
+    width: 80%;
     max-width: 1000px;
-    padding:30px;
+    height: 470px;
+    padding: 10px 30px 10px;
     background:rgba(255,255,255,.1);
     box-shadow: 0 25px 45px rgba(0,0,0,.1);
     border: 1px solid rgba(255,255,255,0.25);
@@ -58,35 +62,190 @@ section::after{
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
-    width: -40%;
+    left: -40%;
+    width: 100%;
     height: 100%;
-    background: rgba(255,255,255,0.05);
+    background-color: rgba(255, 255, 255, 0.05);
     pointer-events: none;
     transform: skewX(-15deg);
-}
+  }
 
 .container h2{
     width: 100%;
     text-align: center;
     color: #fff;
-    font-size:36px;
-    margin-bottom : 20px;
-}
- 
-.container label{
-    color: #fff;
-    font-size: 16px;
+    font-size:34px;
+    margin-bottom : 10px;
 }
 
 .container .labelSp{
     color: rgb(112, 112, 112);
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #fff;
 }
 
 .container .btnValid {
     position: relative;
     left: 40%;
+    top: 107px;
+    border-radius: 25px;
+    height: 40px;
+    padding: 0 20px;
+    background: #c19a59;
+    color: #fff;
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+}
+
+.btnValid:hover {
+    transform: scale(1.1);
+}
+
+.inputBox {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin-top: 35px;
+    color: #fff;
+}
+
+.inputBox input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 0px 10px;
+    color: #000;
+    z-index: -1;
+}
+
+.inputBox textarea {
+    position : absolute;
+    height : 100px;
+    width : 100%;
+    padding: 10px 10px;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #000;
+}
+
+.inputBox .text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 20px;
+    font-size: 18px;
+    padding: 0px 10px;
+    display: block;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+
+.inputBox input:focus ~ .text, .inputBox input:valid ~ .text,
+.inputBox textarea:focus ~ .text, .inputBox textarea:valid ~ .text {
+    top: -25px;
+    left: -10px;
+}
+
+.inputBox .line, .custom-file .line {
+    position: absolute;
     bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: 0.5s;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.inputBox .lineTextArea{
+    position: absolute;
+    bottom: -150%;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: 0.5s;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.inputBox input:focus ~ .line,
+.inputBox input:valid ~ .line {
+    z-index: -1;
+    height: 80%;
+    color: black;
 }
   
+.inputBox textarea:focus ~ .lineTextArea,
+.inputBox textarea:valid ~ .lineTextArea {
+    z-index: -1;
+    height: 240%;
+    color: black;
+}
   
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.icon{
+
+    margin-left: 63px;
+}
+
+.custom-file{
+    position : relative;
+    top : 80px;
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: "Selectionner";
+}
+
+.custom-file-label::after {
+    border-radius: 0;
+}
+
+.btnReload, .btnNewBook{
+    padding: 8px 25px;
+    background: #c19a59;
+    color: #fff;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    position: absolute;
+    top: 400px;
+}
+
+.btnReload{
+    left: 43%;
+}
+
+.btnNewBook{
+    left: 33%;
+}
+
+.seccessText{
+    text-align: center;
+    margin-top: 30%;
+}

@@ -2,7 +2,6 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-//import { User } from "../services/user";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth"
 
@@ -16,8 +15,6 @@ export class AuthService {
 
   setState: any;
 
-  //public afAuth: AngularFireAuth;
-
   constructor(public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
@@ -27,22 +24,26 @@ export class AuthService {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        //JSON.parse(localStorage.getItem('user'));
       } else {
         localStorage.setItem('user', String(null));
-        //JSON.parse(localStorage.getItem('user'));
       }
     })
   }
 
 
   // Sign up with email/password
-  creatNewUser(email: string, password: string) {
+  creatNewUser(email: string, password: string, displayName: string) {
 
     return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then(result => {
+      .then((user) => {
+
+        user.user?.updateProfile({
+            displayName: displayName,
+        });
+        
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
+        this.signOut();
         this.router.navigate(['verify-email-address']);
         this.SendVerificationMail();
       }).catch(error => {
@@ -72,7 +73,6 @@ export class AuthService {
           () => {
             resolve();
           }, (error) => {
-            //window.alert(error.message);
             reject(error);
           }
         );
@@ -89,17 +89,13 @@ export class AuthService {
     provider.addScope("profile");
     provider.addScope("email");
     
-    //firebase.auth().getRedirectResult().then( //this is when i want to redirect to google connection page
     return firebase.auth().signInWithPopup(provider).then( //this is when i want to open google connection page in PopUp
       (result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
         });
       }).catch((error) => {
         window.alert(error);
       });
-    //const showLoading = true;
-
 
   }
 

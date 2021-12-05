@@ -1,13 +1,26 @@
-nav { 
-    background-color: #00b3ff;
+nav {
+    background-color: black;
+}
+
+.logo {
+    position: relative;
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 ul a {
-    color: black;
+    color: #fff;
+}
+
+ul a:hover {
+    color: #c19a59;
 }
 
 .cart-basket {
-    font-size: .6rem;
+    font-size: 0.6rem;
     position: relative;
     top: -25px;
     left: 10px;
@@ -16,29 +29,41 @@ ul a {
     color: #fff;
     background-color: #ff0055;
     border-radius: 50%;
-  }
-
-.cartBtn{
-    height:40px;
-    position: absolute;
-    right: 165px;
-    top: 8px;
 }
 
-.rightPosition{
+.cartBtn i:hover, .price:hover{
+    color: #c19a59;
+}
+
+.cartBtn {
+    height: 40px;
+    position: absolute;
+    right: 210px;
+    top: 12px;
+    color: #fff;
+    background: transparent;
+}
+
+.rightPosition {
     position: absolute;
     top: 10px;
-    right: 25px;
+    right: 35px;
 }
 
-.rightPosition button{
+.rightPosition button {
     width: 100%;
     font-size: 100%;
     font-weight: bold;
     cursor: pointer;
-    background-color: #00b3ff;
+    background-color: #000;
+    color: #fff;
     border: none;
-    //border-bottom: 2px solid #00abf5;
-    color: black;
-   
+}
+
+.rightPosition:hover button {
+    color: #c19a59;
+}
+
+.dropdown-menu{
+    background: #c19a59;
 }

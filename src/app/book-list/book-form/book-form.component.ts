@@ -17,7 +17,7 @@ export class BookFormComponent implements OnInit {
   currentBookUpload!: Book;
   percentage = 0;
 
-  constructor(private bookService: BookService, private route: ActivatedRoute) { }
+  constructor(private bookService: BookService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     
@@ -32,6 +32,8 @@ export class BookFormComponent implements OnInit {
     const file = new File([""], "");
     this.submitted = false;
     this.book = new Book(file); // reset book
+    //this.router.navigate(['/books', 'new']);
+    $('.progress').hide();
   }
 
   selectFile(event: any): void {
@@ -52,5 +54,10 @@ export class BookFormComponent implements OnInit {
         }
       );
     }
+  }
+
+  reloadPage(){
+    this.submitted = false;
+    this.router.navigate(['/books', 'new']);
   }
 }

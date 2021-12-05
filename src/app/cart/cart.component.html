@@ -1,5 +1,5 @@
-<h2 class="text-center m-5">Le contenu de votre panier</h2>
-<section></section>
+<h2 class="text-center">Le contenu de votre panier</h2>
+<section>
 <div class="container">
     <div class="blueBlur"></div>
     <table class="table table-hover p-2 mt-5 text-light">
@@ -26,14 +26,16 @@
                     {{line.book.price | currency:"EUR":"symbol":"2.2-2"}}
                 </td>
                 <td>
-                    <input type="number" class="form-control-sm input-number" style="width:5em" [value]="line.quantity"
-                        (change)="cart.updateQuantity(line.book, $event)" />
+                    <input type="number" class="form-control-sm input-number"
+                     style="width:5em" [value]="line.quantity" onkeypress="return /[0-9]/i.test(event.key)"
+                        (change)="cart.updateQuantity(line.book, $event)" min="0" />
                 </td>
                 <td class="text-right">
                     {{(line.lineTotal) | currency:"EUR":"symbol":"2.2-2" }}
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-sm btn-default" (click)="cart.removeLine(line.book.key!)">
+                    <button class="btn btn-sm btnDeleteProduct" 
+                    (click)="cart.removeLine(line.book.key!)">
                         <i class="bi bi-bag-x" style="color:#000"></i>
                     </button>
                 </td>
@@ -49,8 +51,9 @@
         </tfoot>
     </table>
 </div>
+</section>
 <div class="text-center buttonControl">
-    <button class="btn continueBtn m-1" routerLink="/store">
+    <button class="btn continueBtn" routerLink="/store">
         Continuer mes achats
     </button>
     <button class="btn m-1 checkOutBtn" (click)="onValidCart()" [disabled]="cart.lines.length == 0">

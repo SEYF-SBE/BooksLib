@@ -1,155 +1,217 @@
-.header > h1{
-    font-family: 'Bad script', cursive;
-    font-size: 40px;
-    color: #fff; 
-    margin-left: 30px;
-    filter: blur(.5px);
-        text-shadow: 0 0 10px #00b3ff,
-                    0 0 20px #00b3ff;
+.row {
+    margin-top: 100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
 }
 
-ul li{
+.header > h1 {
+    position: absolute;
+    margin-top: 20px;
+    font-family: "Bad script", cursive;
+    font-size: 4em;
+    color: #fff;
+    text-shadow: 0 0 10px #c19a59, 0 0 20px #c19a59, 0 0 20px #c19a59;
+}
+
+.header {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    min-height: 75px;
+    width: 100%;
+}
+
+.btnDeleteAddBook {
+    grid-column: 3;
+    grid-row: 1;
+    padding-left: 60px;
+    padding-top: 45px;
+    margin-left: 30px;
+}
+
+.newBookBtn {
+    height: 40px;
+    background: #c19a59;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.deleteBookBtn {
+    height: 40px;
+    background: #c19a59;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.blueBlur {
+    position: relative;
+    top: 10%;
+    left: 15%;
+    height: 70%;
+    width: 70%;
+    background: rgba(73, 73, 51, 0.25);
+    filter: blur(700px);
+    z-index: 0;
+}
+
+.container {
+    position: static;
+    margin-top: 5%;
+    z-index: 1000;
+    width: 100%;
+    padding-top: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(145, 145, 145, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+ul li {
     display: inline-flex;
 }
 
-.box{
+.box {
     position: relative;
     top: 40%;
-    width: 250px;
-    height: 450px;
-    border-radius:25px;
-    background: #001923;
-    margin: 35px;
+    width: 200px;
+    min-height: 410px;
+    border-radius: 25px;
+    background: #070707;
+    margin: 28px;
 }
 
-.box::before{
+.box::before {
     content: "";
     position: absolute;
     top: -2px;
     left: -2px;
     right: -2px;
     bottom: -2px;
-    border-radius:25px;
+    border-radius: 25px;
     background: #fff;
     z-index: -1;
 }
 
-.box::after{
+.box::after {
     content: "";
     position: absolute;
     top: -2px;
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: #00b3ff;
-    border-radius:25px;
+    background: #c19a59;
+    border-radius: 25px;
     z-index: -1;
-    filter: blur(20px);
+    filter: blur(10px);
 }
 
-.box .glass{
+.box .glass {
     position: absolute;
     top: 0;
     left: 0;
     width: 50%;
     height: 100%;
     display: block;
-    border-bottom-left-radius:25px;
-    border-top-left-radius:25px;
-    background: rgba(255, 255, 255,.1);
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.box .content{
+.box .content {
     padding: 0px;
-    color: #fff;  
-    height: 85%; 
+    color: #fff;
+    height: 85%;
 }
 
 .imgBook {
     position: relative;
-    left: 18%;
-    width: 120px;
-    height: 120px;
+    left: 14%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 8px; 
+    width: 110px;
+    height: 120px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    border: 1px solid #c19a59;
 }
 
-.box .boxButton{
+.card-title {
+    display: block;
+    min-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+.box .boxButton {
     position: absolute;
     bottom: 2%;
-    left: 32%;
+    left: 28.5%;
 }
 
-.box h4{
-    min-height: 60px;
+.box .boxButton .btnDelete {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background: #000;
+    color: #c19a59;
+    border-color: #000;
 }
 
-.box .autherP{
-    //max-height: 30px;
-    min-height: 50px;
+.box .boxButton .btn-warning {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background: #c19a59;
+    border:none;
+    color: #000;
+}
+
+.box .autherP {
+    max-height: 30px;
+    position: static;
+    top: 150px;
+    min-height: 40px;
     text-align: center;
+    font-size: 13px;
 }
 
-.descriptionP{
+.descriptionP {
     min-height: 100px;
     text-align: justify;
+    font-size: 13px;
 }
 
-section{
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
-    padding: 20px;
-    width: 80%;
-    background: #001923;
-    margin-bottom: 100px;   
-  }
-  
-  section::before{
-    content: "";
-    position:absolute;
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(#ffeb3b, #e91e63);
-    border-radius:50%;
-    transform: translate(-150px, 100px);
-  }
-  
-  section::after{
-    content: "";
-    position:absolute;
-    width: 350px;
-    height: 350px;
-    background: linear-gradient(#2196f3, #83d8ff);
-    border-radius:50%;
-    transform: translate(900px, 600px);
-  }
-  
-  .blueBlur{
-    position: absolute;
-    top: 10%;
-    left : 15%;
-    height: 70%;
-    width: 70%;
-    background: rgba(22, 165, 248, 0.25);
-    filter: blur(300px);
-    z-index: 0;
-  }
+.box:hover{ 
+    background: #c19a59;
+}
 
-  .container{
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, -53%);
-    z-index: 1000;
-    width: 97%;
-    padding-top:30px;
-    background:rgba(255,255,255,.1);
-    box-shadow: 0 25px 45px rgba(0,0,0,.1);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-right: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    border-radius:15px;
-    overflow: hidden;  
-  }
+.boxButton:hover .btn-warning:hover{
+    border: 1px solid #000;
+}
+
+.box:hover::after{
+    filter: blur(25px);
+}
+
+button{
+    transition: all .2s ease-in-out;
+}
+
+Button:hover{
+    transform: scale(1.1);
+}

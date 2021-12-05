@@ -3,18 +3,21 @@ import { CartService } from "../services/cart.service";
 
 @Injectable()
 export class Order {
-    id?: string | null;
     name?: string | null;
     address?: string | null;
     city?: string | null;
-    zip?: string;
-    shipped: boolean = false;
+    zip?: string | null;
+    telephone?:number | null;
+    // payement card data
+    cardNumber?: string | null;
+    nameCard?: string | null;
+    expireDate?: string | null;
 
     constructor(public cart: CartService) { }
     clear() {
-        this.id = null;
-        this.name = this.address = this.city = null;
-        this.shipped = false;
+        this.name = this.address = this.city = this.zip = null;
+        this.cardNumber = this.nameCard = this.expireDate = null;
+        this.telephone = null;
         this.cart.clear();
     }
 }

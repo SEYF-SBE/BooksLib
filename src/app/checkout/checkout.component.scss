@@ -1,106 +1,366 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap");
 
-section::before, section::after {
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+.sectionA {
+    position: absolute;
+    top: 19vh;
+    left: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: 20px;
+    width: 70%;
+    z-index: 1;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+.sectionA::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(#ffeb3b 10%, #c19a59 70%);
+    border-radius: 50%;
+    transform: translate(-22vw, -9vh);
+}
+
+.sectionA::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(#c19a59 40%, #353535);
+    border-radius: 50%;
+    transform: translate(23vw, 13vh);
+}
+.blurred {
+    z-index: 1;
+    position: absolute;
+    left: 8vw;
+    top: 19vh;
+    width: 52%;
+    height: 50vh;
+    border-radius: 10px;
+    filter: blur(55px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.container {
+    position: relative;
+    z-index: 3;
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    height: 65opx;
+    padding: 7vh 50px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    transform: skewX(-15deg);
+}
+
+.textHearder {
+    font-family: "Bad script", cursive;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 7vh;
+    margin-top: 10vh;
+    text-shadow: 0 0 10px #c19a59, 0 0 20px #c19a59;
+}
+
+.inputBox {
+    margin-top: 3vh;
+    position: relative;
+    color: #fff;
+}
+
+.inputBox input {
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 0px 10px;
+    color: #000;
+    z-index: -1;
+}
+
+.inputBox .text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 20px;
+    font-size: 18px;
+    padding: 0px 10px;
+    display: block;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.inputBox input:focus + .text,
+.inputBox input:valid + .text {
+    top: -25px;
+    left: -10px;
+}
+
+.inputBox .line {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: 0.5s;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.inputBox input:focus ~ .line,
+.inputBox input:valid ~ .line {
+    z-index: -1;
+    height: 80%;
+    color: black;
+}
+
+.sectionB::before,
+.sectionB::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-section{
-    font-family: 'Poppins', sans-serif;
+.sectionB {
+    font-family: "Poppins", sans-serif;
     font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-    //height: 10vh;
-    //background-color: #020811;
 }
-/*
-section::before{
-    content: '';
+
+.card-pay {
     position: absolute;
-    left: -203px;
-    bottom: -733px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(#f83274 5%, #ffa400 95%);
-    border-radius:50%;
-}
-*/
-.card-pay{
-    position: relative;
+    z-index: 4;
+    top: 45%;
+    left: 64%;
     width: 342px;
-    height: 216px;
+    height: 207px;
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-.globe{
+.globe {
     position: relative;
     top: 0;
     left: 180px;
-    //float: left;
     width: 142px;
     height: 116px;
-    background-image: url('/assets/images/globe-world-map.png');
+    background-image: url("/assets/images/globe-world-map.png");
     background-size: 140px 116px;
     background-repeat: no-repeat;
     opacity: 0.7;
 }
 
-.card-pay .card-inside{
+.card-pay .card-inside {
     position: relative;
     top: 5px;
     left: 30px;
-    //opacity: 1.5;
 }
 
-.card-inside .chip{
+.card-inside .chip {
     position: relative;
-    top: -45px;
+    top: -55px;
     width: 50px;
     height: 35px;
 }
 
-.visa{
-    width: 40px; 
+.visa {
+    width: 40px;
     height: 40px;
     position: relative;
-    top: -225px;
+    top: -230px;
 }
 
-.card-inside input{
+.card-inside input {
     position: relative;
-    top: -35px;
-    width: 80%;
-    height: 27px;
+    top: -50px;
+    width: 83%;
     background: transparent;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
     font-size: 14px;
     color: #fff;
-    padding: 5px 0;
-
+    padding: 5px 0px;
 }
 
-.card-inside input[type="month"], #tentacles{
-    font-family: 'orbitron';
+.nameCardDiv{
+    padding-top: 5px;
 }
 
-/*
-.card-pay::before{
+.inputNgModel::placeholder {
+    outline: none;
+    font-size: 14px;
+    font-weight: 550;
+    color:#fff;
+}
+  
+#tentacles, .dateInput {
+    font-family: "orbitron";
+    color: fff;
+}
+
+.dateInput {
+    position:relative;
+    top: -30px;
+    left: -12px;
+    width: 97%;
+    height: 0px;
+}
+
+.datepicker-toggle{
+    position:absolute;
+    bottom: 75px;
+    right: 50px;
+    width: 5px;
+    height: 2px;
+}
+
+.inputNgModel{
+    height: 20px;
+}
+
+.mat-form-field-label-wrapper{
+        background:red;
+}
+
+.dateInputDPDiv{
+    height: 20px;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(0,0,0,.0);
+}
+
+.card {
+    z-index: 1;
+    position: absolute;
+    top: 23%;
+    left: 64.8%;
+    width: 320px;
+    height: 120px;
+    box-shadow: 20px 20px 50px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    color: #fff;
+    transition: 0.1s;
+}
+
+.card:hover {
+    transform: translateY(0px);
+}
+
+.cardStyle h2 {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+#cardBody {
+    padding-top: 2px;
+    height: 12px;
+    margin-left: 20px;
+    font-size: 0.9em;
+}
+
+#cardBody span {
+    font-size: 1em;
     position: relative;
-    top: 0;
-    left: 0;
-    width: 341px;
-    height: 341px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.05;
-    
+    left: 45%;
 }
-*/
+
+.card-footer {
+    font-size: 1.4em;
+    padding: 0.35rem 1.25rem;
+}
+
+.card-footer span {
+    position: relative;
+    left: 45%;
+}
+
+.btnValid {
+    position: relative;
+    top: 30px;
+}
+
+.btnValid .btnReturn {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 197px;
+    background: #a7a7a7;
+    font-size: 13px;
+    font-weight: 650;
+    transition: all 0.2s ease-in-out;
+}
+
+.btnValid .btnFinialise {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background: #c19a59;
+    color: #fff;
+    font-weight: 650;
+    font-size: 13px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btnReturn:hover,
+.btnFinialise:hover {
+    transform: scale(1.1);
+}
+
+.underDiv {
+    z-index: -1;
+}
+

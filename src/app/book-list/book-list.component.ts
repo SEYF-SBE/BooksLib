@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { Console } from 'console';
+
+declare var $: any;
 
 @Component({
   selector: 'app-book-list',
@@ -22,18 +25,25 @@ export class BookListComponent implements OnInit {
   title = '';
   message = '';
   isAuthInList: boolean = false;
+  userDisplayName!: string | null;
 
   constructor(private bookService: BookService,
               private router : Router,
               private authService: AuthService) { }
 
   ngOnInit(): void {
+
+
+    
+
     this.getBooksList();
 
     firebase.auth().onAuthStateChanged(
       (user) => {
         if(user){
           this.isAuthInList = true;
+          this.userDisplayName = user.displayName;
+          console.log("displayName : " + this.userDisplayName);
         }else{
           this.isAuthInList = false;
         }
@@ -95,4 +105,6 @@ export class BookListComponent implements OnInit {
   onUpdateBook(book: Book){
     this.router.navigate(['/books', 'edit', book.key, book.title, book.auther, book.description, book.urlPhoto, book.namePhoto, book.price]);
   }
+
+
 }

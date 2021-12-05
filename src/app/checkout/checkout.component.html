@@ -1,78 +1,168 @@
-<div>
-    <div>
-        <h3 class="bg-info p-1 text-white">Checkout Component</h3>
+<form *ngIf="!orderSent" #form="ngForm" novalidate (ngSubmit)="submitOrder(form)" class="m-2">
+    <div class="blurred"></div>
+    <h3 class="p-1 textHearder">Facturation et paiement</h3>
+    <section class="sectionA">
+        <div class="container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="inputBox">
+                            <input class="" #name="ngModel" name="name" onkeypress="return /[a-z ]/i.test(event.key)"
+                                [(ngModel)]="order.name" required />
+                            <span class="text">Nom Prénom</span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="inputBox">
+                            <input class="" #telephone="ngModel" name="telephone"
+                                onkeypress="return /[0-9]/i.test(event.key)" [(ngModel)]="order.telephone"
+                                maxlength="10" required />
+                            <span class="text">Téléphone</span>
+                            <span class="line"></span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="inputBox">
+
+                            <input class="" #address="ngModel" name="address"
+                                onkeypress="return /^[a-z0-9 ^,]+$/i.test(event.key)" [(ngModel)]="order.address"
+                                required />
+                            <span class="text">Addresse</span>
+                            <span class="line"></span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="inputBox">
+                            <input class="" #city="ngModel" name="city" onkeypress="return /[a-z ]/i.test(event.key)"
+                                [(ngModel)]="order.city" required />
+                            <span class="text">Ville</span>
+                            <span class="line"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="inputBox">
+
+                            <input class="" maxlength="5" #zip="ngModel" name="zip"
+                                onkeypress="return /[0-9]/i.test(event.key)" [(ngModel)]="order.zip" required />
+                            <span class="text">Code postal</span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center btnValid">
+                <button class="btn btnReturn" routerLink="/cart">Retour</button>
+                <button class="btn btnFinialise m-1" type="submit">Finalisez la commande</button>
+            </div>
+        </div>
+    </section>
+    <section class="sectionB">
+        <div class="card-pay" data-tilt data-tilt-glare="true" data-tilt-scale="1.1">
+            <div class="card-inside">
+                <div class="globe"></div>
+                <img src="../assets/images/kisspng-integrated-circuits.png" alt="" class="chip">
+                <div class="input-group">
+                    <input maxlength="16" type="text" #cardNumber="ngModel" name="cardNumber"
+                        [(ngModel)]="order.cardNumber" required id="tentacles" maxlength="19"
+                        placeholder="Numéro de la carte" onkeypress="return /[0-9]/i.test(event.key)"
+                        (ngModelChange)="addSpace()">
+                </div>
+
+                <div class="dateInputDPDiv">
+
+                    <mat-form-field appearance="fill" class="dateInput">
+                        <input matInput [matDatepicker]="dp" #expireDate="ngModel" name="expireDate"
+                            [(ngModel)]="order.expireDate" placeholder={{dateYM}} class="inputNgModel"
+                            (focus)="dp.open()" required maxlength="7" minlength="6" />
+                        <mat-datepicker-toggle class="datepicker-toggle" matSuffix [for]="dp" style="color:white;">
+                        </mat-datepicker-toggle>
+
+                        <mat-datepicker #dp startView="multi-year" (monthSelected)="chosenMonthHandler($event, dp)"
+                            panelClass="datepicker">
+                        </mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="nameCardDiv">
+                    <input type="text" #nameCard="ngModel" name="nameCard" [(ngModel)]="order.nameCard" required
+                        onkeypress="return /[a-z ]/i.test(event.key)" id="name" placeholder="Nom sur la carte">
+
+                </div>
+
+                <img src="../assets/images/kisspng-credit-card-visa.png" alt="" class="visa">
+                <img src="../assets/images/kisspng-mastercard.png" alt="" class="visa">
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Vous devez valider</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li *ngIf="submitted && name.invalid" class="text-danger">
+                            Entrez votre nom et prénom
+                        </li>
+                        <li *ngIf="submitted && telephone.invalid" class="text-danger">
+                            Entrez votre numéro de téléphone
+                        </li>
+
+
+                        <li *ngIf="submitted && address.invalid" class="text-danger">
+                            Entrez votre addresse
+                        </li>
+                        <li *ngIf="submitted && city.invalid" class="text-danger">
+                            Entrez votre ville de résidance
+                        </li>
+                        <li *ngIf="submitted && zip.invalid" class="text-danger">
+                            Entrez le code postal de votre ville
+                        </li>
+                        <li *ngIf="submitted && cardNumber.invalid" class="text-danger">
+                            Entrez le numéro de la carte bancaire
+                        </li>
+                        <li *ngIf="(submitted && (!expireDate.touched)) &&
+                         (submitted && (!expireDate.dirty))" class="text-danger">
+
+                            Entrez la date d'éxpiration de votre carte
+                        </li>
+                        <li *ngIf="submitted && nameCard.invalid" class="text-danger">
+                            Entrez le nom marqué sur la carte bancaire
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div *ngIf="orderSent" class="m-2 text-center">
-        <h2>Thanks!</h2>
-        <p>Thanks for placing your order.</p>
-        <p>We'll ship your goods as soon as possible.</p>
-        <button class="btn btn-primary" routerLink="/store">Return to Store</button>
+</form>
+
+<div class="card cardStyle" #idCard data-tilt data-tilt-glare="true" data-tilt-scale="1.1">
+    <div *ngIf="!orderSent">
+        <h2 class="card-header">Montant de mon panier</h2>
+        <p class="" id="cardBody">nombre d'articles <span>{{ cart.itemCount }}</span></p>
+        <p class="card-footer">TOTAL <span>{{cart.cartPrice | currency:"EUR":"symbol":"2.2-2"}}</span></p>
     </div>
-
-    <form *ngIf="!orderSent" #form="ngForm" novalidate (ngSubmit)="submitOrder(form)" class="m-2">
-        <div class="form-group">
-            <label>Name</label>
-            <input class="form-control" #name="ngModel" name="name" [(ngModel)]="order.name" required />
-            <span *ngIf="submitted && name.invalid" class="text-danger">
-                Please enter your name
-            </span>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <input class="form-control" #address="ngModel" name="address" [(ngModel)]="order.address" required />
-            <span *ngIf="submitted && address.invalid" class="text-danger">
-                Please enter your address
-            </span>
-        </div>
-        <div class="form-group">
-            <label>City</label>
-            <input class="form-control" #city="ngModel" name="city" [(ngModel)]="order.city" required />
-            <span *ngIf="submitted && city.invalid" class="text-danger">
-                Please enter your city
-            </span>
-        </div>
-
-        <div class="form-group">
-            <label>Zip/Postal Code</label>
-            <input class="form-control" #zip="ngModel" name="zip" [(ngModel)]="order.zip" required />
-            <span *ngIf="submitted && zip.invalid" class="text-danger">
-                Please enter your zip/postal code
-            </span>
-        </div>
-
-        <div class="text-center">
-            <button class="btn btn-secondary m-1" routerLink="/cart">Back</button>
-            <button class="btn btn-primary m-1" type="submit">Complete Order</button>
-        </div>
-    </form>
 </div>
-
-<section>
-    <div class="card-pay" data-tilt data-tilt-glare="true" data-tilt-scale="1.1">
-
-        <div class="card-inside">
-            <div class="globe"></div>
-            <img src="../assets/images/kisspng-integrated-circuits.png" alt="" class="chip">
-            <div class="input-group">
-                <input type="text" id="tentacles" name="tentacles"
-                 min="13" max="13"
-                 placeholder="Numéro de la carte">
-            </div>
-            <div class="input-group">
-                <input type="month" id="dateFin" name="dateFin" 
-                min="2020-01" value="25/12"
-                placeholder="Expire Fin">
-            </div>
-
-            <div class="">
-                <input type="text" id="name" name="name"
-                 placeholder="Nom sur la carte">
-            </div>
-
-            <img src="../assets/images/kisspng-credit-card-visa.png" alt="" class="visa">
-            <img src="../assets/images/kisspng-mastercard.png" alt="" class="visa">
-        </div>
-
-    </div>
-</section>

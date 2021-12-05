@@ -1,40 +1,39 @@
 h2 {
     font-family: "Bad script", cursive;
-    font-size: 40px;
+    font-size: 7vh;
+    margin-top: 15vh;
     color: #fff;
-    //margin-left: 30px;
-    filter: blur(0.5px);
-    text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff;
+    text-shadow: 0 0 10px #c19a59, 0 0 20px #c19a59;
 }
 
 section {
+    display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 20vh;
+    min-height: 40vh;
     padding: 20px;
-    width: 80%;
-    background: #001923;
-    z-index: -1;
+    width: 100%;
+    background: transparent;
 }
 
 section::before {
     content: "";
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(#ffeb3b, #e91e63);
+    width: 220px;
+    height: 220px;
+    background: linear-gradient(#ffeb3b 10%, #c19a59 70%);
     border-radius: 50%;
-    transform: translate(-70px, 40px);
+    transform: translate(-500px, -10px);
 }
 
 section::after {
     content: "";
     position: absolute;
-    width: 250px;
-    height: 250px;
-    background: linear-gradient(#2196f3, #83d8ff);
+    width: 170px;
+    height: 170px;
+    background: linear-gradient(#c19a59 40%, #353535);
     border-radius: 50%;
-    transform: translate(950px, -70px);
+    transform: translate(500px, 35px);
 }
 
 .blueBlur {
@@ -50,11 +49,8 @@ section::after {
 
 .container {
     position: relative;
-    left: 50%;
-    transform: translate(-50%, -53%);
     z-index: 1000;
-    width: 97%;
-    //padding-top:30px;
+    width: 75vw;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -62,6 +58,18 @@ section::after {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    transform: skewX(-15deg);
 }
 
 .imgBook {
@@ -77,6 +85,10 @@ tbody tr td {
     vertical-align: middle;
 }
 
+tbody tr:hover{
+    color: #c19a59;
+}
+
 .emptyCart {
     font-weight: 500;
     font-size: 1.5em;
@@ -84,27 +96,48 @@ tbody tr td {
 }
 
 .buttonControl {
-    position: relative;
-    margin-top: -90px;
-    margin-left: 30px;
+    margin-top: 25px;
+    margin-bottom: 30px;
 }
 
 .buttonControl .checkOutBtn {
-    float: right;
-    background-color: #00b3ff;
-    border-color: #00b3ff;
+    background-color: #c19a59;
     color: white;
     padding: 8px 20px;
     text-align: center;
     font-size: 16px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
-.continueBtn{
-    float: left;
+.continueBtn {
     background-color: #a7a7a7;
-    border-color: #a7a7a7;
     color: black;
     padding: 8px 20px;
     text-align: center;
     font-size: 16px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.input-number {
+    background: transparent;
+    border: none;
+    color: #fff;
+}
+
+.btnDeleteProduct {
+    background: #c19a59;
+}
+
+button{
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover{
+    transform: scale(1.1);
 }

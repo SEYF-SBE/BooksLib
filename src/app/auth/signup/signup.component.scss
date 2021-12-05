@@ -3,9 +3,9 @@
     left: 15%;
     min-height: 65vh;
     width: 70%;
-    background: gray;
+    background: rgba(88, 88, 88, 0.35);
     filter: blur(200px);
-    z-index: 0;
+    z-index: -1;
 }
 
 .container {
@@ -16,8 +16,8 @@
     z-index: 1000;
     width: 40%;
     max-width: 1000px;
-    min-height: 450px; //
-    padding-top: 20px;
+    min-height: 440px; //
+    padding-top: 10px;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -27,54 +27,145 @@
     overflow: hidden;
 }
 
-section::before {
+.container::before {
     content: "";
     position: absolute;
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(#ffeb3b, #e91e63);
-    border-radius: 50%;
-    transform: translate(30px, 10px);
+    top: 0;
+    left: -40%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    transform: skewX(-15deg);
 }
 
-section::after {
-    content: "";
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    background: linear-gradient(#2196f3, #83d8ff);
-    border-radius: 50%;
-    transform: translate(700px, 300px);
+@media screen and (max-width: 1280px) {
+    section::before {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        background: linear-gradient(#ffeb3b 10%, #c19a59 70%);
+        border-radius: 50%;
+        transform: translate(170px, 115px);
+    }
+
+    section::after {
+        content: "";
+        position: absolute;
+        width: 170px;
+        height: 170px;
+        background: linear-gradient(#c19a59 40%, #353535);
+        border-radius: 50%;
+        transform: translate(730px, 370px);
+    }
 }
 
-.container h3 {
-    margin-top: 30px;
-    margin-bottom: 50px;
+
+@media screen and (min-width: 1300px) {
+    section::before {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        background: linear-gradient(#ffeb3b 10%, #c19a59 70%);
+        border-radius: 50%;
+        transform: translate(40px, 300px);
+    }
+
+    section::after {
+        content: "";
+        position: absolute;
+        width: 170px;
+        height: 170px;
+        background: linear-gradient(#c19a59 40%, #353535);
+        border-radius: 50%;
+        transform: translate(870px, 550px);
+    }
+}
+
+.container h2 {
+    margin-top: 25px;
+    margin-bottom: 15px;
     width: 100%;
     left: 0;
     text-align: center;
     color: #fff;
-    font-size: 32px;
-}
-
-.container label {
-    color: #fff;
-    font-size: 16px;
+    font-size: 1.8em;
 }
 
 .container .btnValid {
     position: absolute;
-    top: 100%;
+    top: 105%;
     left: 50%;
-    width: 170px;
+    width: 185px;
     height: 40px;
-    margin-top: 20px;
+    margin-top: 25px;
+    border-radius: 25px;
+    background: #c19a59;
+    color: #fff;
+    font-weight: 700;
+    padding: 0 20px;
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
 }
 
-.container input{
+.inputBox {
+    margin-top: 45px;
+    position: relative;
+    color: #fff;
+}
+
+.inputBox input {
     width: 100%;
-    margin-bottom: 35px;
+    height: 40px;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 0px 10px;
+    color: #000;
+    z-index: -1;
+}
+
+.inputBox .text {
+    position: absolute;
+    top: 0;
     left: 0;
+    line-height: 20px;
+    font-size: 18px;
+    padding: 0px 10px;
+    display: block;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.inputBox input:focus ~ .text,
+.inputBox input:valid ~ .text {
+    top: -25px;
+    left: -10px;
+}
+
+.inputBox .line {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: 0.5s;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.inputBox input:focus ~ .line,
+.inputBox input:valid ~ .line {
+    z-index: -1;
+    height: 80%;
+    color: black;
+}
+
+.modal{
+	margin-top: 15%;
 }

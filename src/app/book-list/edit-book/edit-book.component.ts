@@ -11,7 +11,7 @@ import { BookService } from 'src/app/services/books.service';
 export class EditBookComponent implements OnInit {
 
   bookOld =  new Book(new File([''], ""));
-  //book = new Book(new File([""], ""));
+  submitted = false;
 
   selectedBooks?: FileList;
   currentBookUpload!: Book;
@@ -34,10 +34,20 @@ export class EditBookComponent implements OnInit {
   }
 
   onUpdate(){
-    this.bookService.deleteFile(this.bookOld);
-    this.upload();
-    this.router.navigate(['/books']);
-    //this.submitted = true;
+
+    if(((this.bookOld.title)!.length === 0) || ((this.bookOld.auther)!.length === 0)
+    || ((this.bookOld.price) === 0) || ((this.bookOld.description)!.length === 0) || ((this.bookOld.namePhoto)!.length === 0)){
+      this.submitted = true;
+      console.log("");
+     
+    }else{
+      
+      this.bookService.deleteFile(this.bookOld);
+      this.upload();
+      this.submitted = true;
+      this.router.navigate(['/books']);
+    }
+    
   }
 
   upload(): void {
@@ -54,5 +64,9 @@ export class EditBookComponent implements OnInit {
         }
       );
     }
+  }
+
+  reloadPage(){
+    this.submitted = false;
   }
 }

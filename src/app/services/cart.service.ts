@@ -53,9 +53,7 @@ export class CartService {
 		this.cartPrice = 0;
 		this.lines.forEach(l => {
 			this.itemCount += l.quantity;
-			//if (l.book.price != undefined) {
-				this.cartPrice += (l.quantity * l.book.price!);
-			//}
+			this.cartPrice += (l.quantity * l.book.price!);
 		})
 	}
 }
@@ -65,11 +63,6 @@ export class CartLine {
 	constructor(public book: Book, public quantity: number) { }
 
 	get lineTotal() {
-		//if (this.book.price != undefined) {
-			return this.quantity * this.book.price!;
-		//}else{
-			//return this.quantity ; 
-		//}
-
+		return this.quantity * this.book.price!;
 	}
 }

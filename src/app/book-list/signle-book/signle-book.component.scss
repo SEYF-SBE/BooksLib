@@ -1,78 +1,100 @@
-.all{
+.all {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 85vh;
 }
 
-.carda{
+.carda {
+    margin-top: 100px;
     background: #fff;
     position: relative;
-    width: 450px;
-    height: 550px;
+    width: 55vh;
+    height: 68vh;
     transform-style: preserve-3d;
     transform: perspective(2000px);
     transition: 1s;
-    box-shadow: inset 300px 0 50px rgba(79, 255, 246, 0.15), 0 20px 20px rgba(79, 255, 246, 0.15);
+    box-shadow: inset 300px 0 50px rgba(255, 235, 55, 0.15), 0 20px 20px rgba(255, 235, 55, 0.15);
 }
 
-.carda:hover{ 
+.carda:hover {
     transform: perspective(2000px) translateX(50%);
-    box-shadow: inset 20px 0 50px rgba(79, 255, 246, 0.15), 0 10px 10px rgba(79, 255, 246, 0.15);
+    box-shadow: inset 20px 0 50px rgba(255, 235, 55, 0.15), 0 10px 10px rgba(255, 235, 55, 0.15);
 }
 
-.carda .details{
+.carda .details {
     position: absolute;
     top: 0;
     left: 0;
     text-align: center;
     width: 100%;
     height: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     z-index: 1;
+    padding: 30px;
 }
 
 .imgBook {
-    max-width: 70%;
-    max-height: 150px; 
+    width: 30%;
+    height: 30%;
+    position: relative;
+    margin-top: 5px;
 }
 
-.carda .details h2{
-    font-weight: 500;
-    margin: 15px 0;
+.carda .details h2 {
+    position: relative;
+    font-weight: 700;
+    font-size: 3vh;
+    width: 100%;    
+    text-align: center;
+    margin-top: 5%;
 }
 
-.carda .details h3{
-    font-size: 1.5em;
+.carda .details h5 {
+    font-size: 2vh;
+    margin-top: 15px;
+}
+
+.carda .details h3 {
+    font-size: 3vh;
     color: #e82a5b;
     font-weight: 600;
-}
-
-.carda .details p{
-    margin: 20px;
-    text-align: justify;
-}
-
-.carda .details button{
-    display: inline-block;
-    padding: 8px 20px;
-    background: #00b3ff;
-    color: #fff;
     margin-top: 5px;
-    letter-spacing: 1px;
+}
+
+.carda .details p {
+    margin: 20px 10px 20px 10px;
+    text-align: justify;
+    font-size: 2vh;
+}
+
+.row {
+    position: absolute;
+    bottom: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.carda .details button {
+
+    padding: 5px 20px;
+    background: #c19a59;
+    color: #000;
+    margin-left: 40%;
     border-radius: 25px;
     text-decoration: none;
     font-weight: 500;
+    font-size: 2vh;
 }
 
-.carda .covera{
+.carda .covera {
     position: relative;
     width: 100%;
     height: 100%;
@@ -87,43 +109,52 @@
     transform-origin: left;
 }
 
-.carda .covera img{
-    max-width: 300px;
-    height: 300px;
+.carda .covera img {
+    width: 13vw;
+    height: 35vh;
     z-index: 1;
 }
 
-.carda .covera::before{
+.carda .covera::before {
     content: "";
     position: absolute;
     width: 10px;
     height: 150%;
     background: #fff;
     transform: rotate(39.3deg);
-    box-shadow: 0 0 0 20px #00b3ff;
+    box-shadow: 0 0 0 20px #c19a59;
     transition: 0.5s;
     transition-delay: 0.7s;
 }
 
-.carda:hover .covera::before{
+.carda:hover .covera::before {
     width: 0;
-    box-shadow: 0 0 0 350px #00b3ff;
+    box-shadow: 0 0 0 350px #c19a59;
     transform: rotate(140.2deg);
 }
 
-.carda:hover .covera{
+.carda:hover .covera {
     transform: rotateY(-180deg);
 }
 
-.backBtn{
+.backBtn {
     padding: 8px 20px;
-    background: #00b3ff;
-    color: #fff;
+    background: #c19a59;
+    color: #000;
     margin-top: 0;
     letter-spacing: 1px;
     border-radius: 5px;
-    font-weight: 500;
+    font-weight: 600;
     position: absolute;
     left: 47%;
-    top: 92%;
+    top: 90%;
+    border-radius: 25px;
+}
+
+.btnAddProduct{
+    transition: all .2s ease-in-out;
+}
+
+.btnAddProduct:hover{
+    transform: scale(1.1);
 }

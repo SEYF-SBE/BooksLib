@@ -32,13 +32,20 @@ import { LibFirstGuardService } from './services/lib-first.guard.service';
 import { OrderService } from './services/order.service';
 import { Order } from './models/Order.model';
 import { CheckOutConnectComponent } from './check-out-connect/check-out-connect.component';
-import { DropdownComponent } from './header/dropdown/dropdown.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatepickerDirective } from './directives/datepicker.directive';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SubmittedOrderComponent } from './checkout/submitted-order/submitted-order.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 const appRoutes: Routes = [
 
   { path: 'books', canActivate: [LibFirstGuardService], component: BookListComponent }, // canActivate: [AuthGuardService],  
-  { path: 'books/new', canActivate: [AuthGuardService], component: BookFormComponent },
+  { path: 'books/new', component: BookFormComponent }, //canActivate: [AuthGuardService]
   { path: 'books/edit/:key/:title/:author/:description/:urlPhoto/:namePhoto/:price', canActivate: [AuthGuardService], component: EditBookComponent },
   { path: 'books/view/:key', component: SignleBookComponent }, // canActivate: [AuthGuardService],
   { path: 'auth/signup', component: SignupComponent },
@@ -48,6 +55,7 @@ const appRoutes: Routes = [
   { path: 'cart',  component: CartComponent }, //canActivate: [LibFirstGuardService],
   { path: 'checkout', component: CheckoutComponent },//canActivate: [LibFirstGuardService],
   { path: 'checkoutConnect', component: CheckOutConnectComponent },
+  { path: 'submittedOrder', component: SubmittedOrderComponent },
   { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: '**', redirectTo: 'books' }
 ]
@@ -68,7 +76,9 @@ const appRoutes: Routes = [
     CartComponent,
     CheckoutComponent,
     CheckOutConnectComponent,
-    DropdownComponent //
+    DatepickerDirective,
+    SubmittedOrderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +92,12 @@ const appRoutes: Routes = [
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage 
 
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule, 
+    MatNativeDateModule,
+
   ],
   providers: [
     AuthService,
@@ -93,6 +108,6 @@ const appRoutes: Routes = [
     OrderService,
     Order
   ],
-  bootstrap: [AppComponent, DropdownComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

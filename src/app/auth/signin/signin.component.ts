@@ -48,7 +48,6 @@ export class SigninComponent implements OnInit {
     }, (error) => {
       alert(error.message);
     });
-    //this.router.navigate(['/books']);
   }
 
 }

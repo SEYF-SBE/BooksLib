@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap");
+
+.divSubmitted{
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.divSubmitted button {
+    margin-top: 10px;
+    border-radius: 25px;
+    padding: 8px 20px 8px 20px;
+    background: #c19a59;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.divSubmitted button:hover {
+    transform: scale(1.1);
+}
+
+.merci {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -25px;
+    left: -7vw;
+}
+
+.divSubmitted p {
+    margin-top: 6px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.bookHover {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 30px;
+    left: 4%;
+}
+
+.soon, .bookSpan{
+    text-transform: uppercase;
+}
+
+.bookSpan{
+    color: #c19a59;
+}

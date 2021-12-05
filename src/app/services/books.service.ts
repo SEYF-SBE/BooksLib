@@ -14,7 +14,6 @@ export class BookService {
   books: AngularFireList<Book>; //  list of objects
   bookRef!: AngularFireObject<any>;
   book!: Observable<any>;
-  //photoUrl!: string;
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) {
     this.books = this.db.list(this.basePath);
@@ -90,7 +89,6 @@ export class BookService {
 
   // Delete all books
   deleteAll(): Promise<void> {
-    //this.storage.storage.ref().child(this.basePath).delete();
     this.storage.storage.ref(this.basePath).listAll().then(data => {
       data.items.forEach(item => {
         item.delete();
